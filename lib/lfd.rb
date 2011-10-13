@@ -4,8 +4,8 @@ require 'yaml'
 class LFD
 
   CONFIG_FILE = "asproj.info"
-  MXMLC = "/home/qhwa/working-disk/working/libary/flex_sdk_4/bin/mxmlc"
-  FLASH_PLAYER = "/home/qhwa/workspace/tools/flashplayer11"
+  MXMLC = ENV["MXMLC"]
+  FLASH_PLAYER = ENV["FLASH_PLAYER"]
 
   def init(opt={})
     puts "creating new project #{opt}"
