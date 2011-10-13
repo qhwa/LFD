@@ -9,7 +9,7 @@ LFD 可以帮助你在Linux下开发和调试Flash(ActionScript3和Flex)项目
     lfd build   #编译项目
     lfd run     #以flashplayer打开编译出来的flash文件
     lfd test    #编译并打开
-    lfd destroy #删除项目
+    lfd rm      #删除项目
 
 ## 配置
 在$HOME/.bashrc中指定以下配置：
