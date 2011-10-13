@@ -1,4 +1,5 @@
 # -*- encoding:utf-8
+require 'yaml'
 
 class LFD
 
@@ -16,6 +17,10 @@ class LFD
 
   def build(opt={})
     puts "building #{opt}"
+    unless File.exist?(CONFIG_FILE)
+      puts "#{CONFIG_FILE} not found, exiting"
+      exit 
+    end
     info = YAML.load_file(CONFIG_FILE)
     ot = info["output"]
     args = [
@@ -28,7 +33,6 @@ class LFD
     args << "--default-size=#{w},#{h}" if w and h
     args << "--debug=true"
     # TODO: 加上更多的编译选项
-    #
     system MXMLC, info["main"], *args
   end
 

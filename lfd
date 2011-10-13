@@ -1,0 +1,2 @@
+#!/usr/bin/env ruby
+exec "/usr/local/ruby/bin/rake", "-f#{File.dirname(File.expand_path(__FILE__))}/lfd.rake", *ARGV
