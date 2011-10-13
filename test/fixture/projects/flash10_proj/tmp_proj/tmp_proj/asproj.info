@@ -1,0 +1,6 @@
+name: test_as_proj
+target: 11.0
+source: src
+library: lib
+main: src/Main.as
+output: bin/test_as_proj.swf
