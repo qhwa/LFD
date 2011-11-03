@@ -30,16 +30,6 @@ module LFDTest
 
       end
 
-      def test_init_proj_with_name
-
-        @lfd.init :proj => PROJ_DIR
-        assert File.directory?(PROJ_DIR)
-
-        cd PROJ_DIR
-        assert_proj_struct
-
-      end
-
       private
       def cd(folder)
         FileUtils.cd folder

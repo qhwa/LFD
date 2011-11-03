@@ -6,60 +6,72 @@ class LFD
   CONFIG_FILE = "asproj.info"
   MXMLC = ENV["MXMLC"]
   FLASH_PLAYER = ENV["FLASH_PLAYER"]
+  TRACE_LOG = "#{ENV["HOME"]}/.macromedia/Flash_Player/Logs/flashlog.txt"
+  CONFIG_SAMPLE = File.expand_path("../#{CONFIG_FILE}.sample", __FILE__)
+
+  def setup(opt={})
+    install_flex_sdk
+    install_flash_player
+  end
 
   def init(opt={})
-    puts "creating new project #{opt}"
-    base = opt[:proj]
-    set_base(base) if base
-    create_proj_files
-    FileUtils.cd '..' if base
+    FileUtils.cp CONFIG_SAMPLE, CONFIG_FILE
+    FileUtils.mkdir_p %w(bin lib src tmp)
   end
 
   def build(opt={})
-    puts "building #{opt}"
-    unless File.exist?(CONFIG_FILE)
+    if File.exist?(CONFIG_FILE)
+      info = YAML.load_file(CONFIG_FILE)
+      args = build_arg(info)
+      system MXMLC, info["main"], *args
+      raise "build_fail" if $?.exitstatus != 0
+    else
       puts "#{CONFIG_FILE} not found, exiting"
       exit 
     end
+  end
+
+  def run(opt={})
+    empty_tracelog
     info = YAML.load_file(CONFIG_FILE)
+    swf = File.expand_path(info["output"]["file"], FileUtils.pwd) 
+    player = fork { exec FLASH_PLAYER, swf}
+    tracer = fork { exec "tail", "-f", TRACE_LOG }
+    Process.detach tracer
+    Process.wait
+    Process.kill "HUP", tracer
+  end
+
+  def rm(opt={})
+    FileUtils.rm_f CONFIG_FILE
+    FileUtils.rmdir %w(bin lib src tmp)
+  end
+
+  private
+  def install_flex_sdk
+  end
+
+  def install_flash_player
+  end
+
+  def empty_tracelog
+    system "echo '' > #{TRACE_LOG}"
+  end
+
+  def build_arg(info)
     ot = info["output"]
     args = [
       "--target-player=#{info["target"]}",
       "--output=#{ot["file"]}",
       "--source-path=#{array_opt_to_s info["source"]}",
-      "--library-path=#{array_opt_to_s info["library"]}"
+      "--debug=true",
+      "-static-link-runtime-shared-libraries=true" 
+      # TODO: 加上更多的编译选项
     ]
+    info["library"].each { |lib| args << "--library-path+=#{lib}" }
     w, h = ot["width"], ot["height"]
     args << "--default-size=#{w},#{h}" if w and h
-    args << "--debug=true"
-    # TODO: 加上更多的编译选项
-    system MXMLC, info["main"], *args
-  end
-
-  def run(opt={})
-    puts "running #{opt}"
-    info = YAML.load_file(CONFIG_FILE)
-    fork { exec FLASH_PLAYER, File.expand_path(info["output"]["file"],FileUtils.pwd) }
-  end
-
-  def rm(opt={})
-    destory_proj
-  end
-
-  private
-  def set_base(base)
-    FileUtils.mkdir_p base
-    FileUtils.cd base
-  end
-
-  def create_proj_files
-    FileUtils.cp( File.expand_path("../#{CONFIG_FILE}.sample", __FILE__), CONFIG_FILE)
-    FileUtils.mkdir %w(bin lib src tmp)
-  end
-
-  def destory_proj
-    FileUtils.rm_f CONFIG_FILE
-    FileUtils.rmdir %w(bin lib src tmp)
+    args
   end
 
   def array_opt_to_s(src)
