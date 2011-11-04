@@ -8,6 +8,7 @@ class LFD
   FLASH_PLAYER = ENV["FLASH_PLAYER"]
   TRACE_LOG = "#{ENV["HOME"]}/.macromedia/Flash_Player/Logs/flashlog.txt"
   CONFIG_SAMPLE = File.expand_path("../#{CONFIG_FILE}.sample", __FILE__)
+  MM_CFG = "#{ENV["HOME"]}/mm.cfg"
 
   def setup(opt={})
     install_flex_sdk
@@ -32,6 +33,7 @@ class LFD
   end
 
   def run(opt={})
+    check_tracelog_config
     empty_tracelog
     info = YAML.load_file(CONFIG_FILE)
     swf = File.expand_path(info["output"]["file"], FileUtils.pwd) 
@@ -54,6 +56,29 @@ class LFD
   def install_flash_player
   end
 
+  public
+  def check_tracelog_config
+    if File.exist?(MM_CFG)
+      File.open(MM_CFG, 'r+') do |file|
+        cfg = {}
+        file.each do |line|
+          opt = line.split('=')
+          cfg[opt[0]] = opt[1].chomp
+        end
+        cfg["ErrorReportingEnable"]="1"
+        cfg["TraceOutputFileEnable"]="1"
+        str = cfg.inject("") { |s,o| "#{s}#{o[0]}=#{o[1]}\n" }
+        file.rewind
+        file.write str
+      end
+    else
+      File.open(MM_CFG, 'w') do |file|
+        file.puts("ErrorReportingEnable=1\nTraceOutputFileEnable=1")
+      end
+    end
+  end
+
+  private
   def empty_tracelog
     system "echo '' > #{TRACE_LOG}"
   end

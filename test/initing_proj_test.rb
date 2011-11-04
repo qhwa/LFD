@@ -1,6 +1,4 @@
-require 'test/unit'
-require 'fileutils'
-require_relative '../lib/lfd.rb'
+require_relative 'helper'
 
 module LFDTest
 
