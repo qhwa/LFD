@@ -15,7 +15,8 @@ LFD 可以帮助你在Linux下开发和调试Flash(ActionScript3和Flex)项目
     lfd rm      #删除项目，会删除lfd创建出来的 asproj.info 文件
     lfd         #等同于 lfd test
 
-##  系统要求
+##  安装
+###  系统要求
 1. ruby 1.9.2+ 运行环境
     unbuntu 下可以通过命令安装
 
@@ -26,6 +27,14 @@ LFD 可以帮助你在Linux下开发和调试Flash(ActionScript3和Flex)项目
 
 3. 独立Flash播放器
     可以从Adobe官方网站下载，建议使用最新的Debugger版
+
+### 安装LFD
+
+    \# 这里的路径可以替换成你喜欢的任意地方
+    LFD_PATH=$HOME/.lfd
+    git clone https://qhwa@github.com/qhwa/LFD.git $LFD_PATH
+    echo -e "alias lfd=$LFD_PATH/lfd" >> ~/.bashrc
+    source ~/.bashrc
 
 ## 配置
 
