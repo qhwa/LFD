@@ -1,21 +1,48 @@
 # Linux Flash Develp
-LFD will help you build and debug flash(ActionScript3 and Flex) project on Linux.  
-LFD 可以帮助你在Linux下开发和调试Flash(ActionScript3和Flex)项目
+LFD,  which stands for "Linux Flash Develop", will help you develop Flash and Flex applications on Linux, especially Ubuntu.
 
-## 使用方法
+## Pain of Flash Developing On Linux
+1. you must write many lines of command to compile your code into a swf file
+2. 'trace' do not output in standard output (such as terminal) in new version of standalone flash player
 
-    lfd -T      #显示所有任务
-    lfd init    #在当前目录初始化项目
-    lfd build   #编译项目
-    lfd run     #以flashplayer打开编译出来的flash文件
-    lfd test    #编译并打开
-    lfd rm      #删除项目
+LFD is your firend if you are suffering the pain as well as me.
 
-## 配置
-在$HOME/.bashrc中指定以下配置：
+## Usage
+
+    lfd init    # init your project home, creating file: asproj.info, making dirs: bin/ src/
+    lfd build   # compile your main Appliation file(config in asproj.info) into a binary swf file
+    lfd run     # open swf file with standalone Adobe Flash Player.
+    lfd test    # equals "lfd build && lfd run"
+    lfd rm      # delete project info file and folders created by LFD. will not delete non-empty folder
+    lfd         # equals "lfd test"
+
+    lfd -T      # list all commands
+
+##  Installation
+###  System Requirements
+1. ruby 1.9.2+ 
+    you can install ruby1.9.2 with this commands on unbuntu:
+
+        sudo apt-get install ruby1.9.1
+
+2. Flex SDK
+    you can download Flex SDK from Adobe, version 4.5+ is suggested because I havn't test many versions of SDK.
+
+3. Standalone Flash Player
+    you can download it from Adobe. Make sure to use the latest debugger version.
+
+### Install LFD
+
+    \# change to any path you like
+    LFD_PATH=$HOME/.lfd
+
+    git clone https://qhwa@github.com/qhwa/LFD.git $LFD_PATH
+    echo -e "alias lfd=$LFD_PATH/lfd" >> ~/.bashrc
+    source ~/.bashrc
+
+## Configuration
+
+    LFD requires Flex SDK and Flash Player very much. Please config them in your bash config (~/.bashrc commonly)
 
     export MXMLC="/path/to/flex_sdk/bin/mxmlc"
     export FLASH_PLAYER="/path/to/flashplayer_standalone"
-
-## 本项目的状态
-业余时间开发，因此功能比较简陋，会逐渐补全功能。
