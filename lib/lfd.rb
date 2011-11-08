@@ -37,7 +37,7 @@ class LFD
     empty_tracelog
     info = YAML.load_file(CONFIG_FILE)
     swf = File.expand_path(info["output"]["file"], FileUtils.pwd) 
-    player = fork { exec FLASH_PLAYER, swf}
+    player = fork { exec "#{FLASH_PLAYER} #{swf} 2> /dev/null"}
     tracer = fork { exec "tail", "-f", TRACE_LOG }
     Process.detach tracer
     Process.wait
