@@ -18,19 +18,22 @@ LFD 可以帮助你在Linux下开发和调试Flash(ActionScript3和Flex)项目
 ##  安装
 ###  系统要求
 1. ruby 1.9.2+ 运行环境
+
     unbuntu 下可以通过命令安装
 
         sudo apt-get install ruby1.9.1
 
 2. flex sdk
-    可以从Adobe官方网站下载，建议使用4.5以上的SDK
+
+    可以从Adobe官方网站[下载](http://opensource.adobe.com/wiki/display/flexsdk/Flex+SDK)，建议使用4.5以上的SDK
 
 3. 独立Flash播放器
-    可以从Adobe官方网站下载，建议使用最新的Debugger版
+
+    可以从Adobe官方网站[下载](http://www.adobe.com/support/flashplayer/downloads.html)，建议使用最新的Debugger版
 
 ### 安装LFD
 
-    \# 这里的路径可以替换成你喜欢的任意地方
+    # 这里的路径可以替换成你喜欢的任意地方
     LFD_PATH=$HOME/.lfd
     git clone https://qhwa@github.com/qhwa/LFD.git $LFD_PATH
     echo -e "alias lfd=$LFD_PATH/lfd" >> ~/.bashrc
