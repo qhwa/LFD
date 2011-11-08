@@ -33,8 +33,8 @@ module LFDTest
 
       private
       def assert_right_config
-        assert File.readlines(MM_CFG).any? { |line| line == "ErrorReportingEnable=1" }
-        assert File.readlines(MM_CFG).any? { |line| line == "TraceOutputFileEnable=1" }
+        assert File.readlines(MM_CFG).any? { |line| line.chomp == "ErrorReportingEnable=1" }
+        assert File.readlines(MM_CFG).any? { |line| line.chomp == "TraceOutputFileEnable=1" }
       end
 
 
