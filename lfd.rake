@@ -7,7 +7,6 @@ EXIT_ON_ERROR = Proc.new do |t, arg|
   begin
     PROXY.call t, arg
   rescue => e
-    puts e.message
     exit
   end
 end
@@ -20,7 +19,10 @@ desc "在当前页面初始化as项目目录"
 task :init, :proj, &PROXY
 
 desc "编译项目"
-task :build, :type, &EXIT_ON_ERROR
+task :build, &EXIT_ON_ERROR
+
+desc "发布项目（编译release版本）"
+task :release, &EXIT_ON_ERROR
 
 desc "打开编译后的.swf文件"
 task :run, :target, &PROXY

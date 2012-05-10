@@ -3,12 +3,12 @@ require 'yaml'
 
 class LFD
 
-  CONFIG_FILE = "asproj.info"
-  MXMLC = ENV["MXMLC"]
-  FLASH_PLAYER = ENV["FLASH_PLAYER"]
-  TRACE_LOG = "#{ENV["HOME"]}/.macromedia/Flash_Player/Logs/flashlog.txt"
+  CONFIG_FILE   = 'asproj.info'
+  MXMLC         = ENV['MXMLC'] || 'mxmlc'
+  FLASH_PLAYER  = ENV['FLASH_PLAYER'] || 'flashplayer'
+  TRACE_LOG     = File.join ENV['HOME'], '/.macromedia/Flash_Player/Logs/flashlog.txt'
   CONFIG_SAMPLE = File.expand_path("../#{CONFIG_FILE}.sample", __FILE__)
-  MM_CFG = "#{ENV["HOME"]}/mm.cfg"
+  MM_CFG        = File.join ENV['HOME'], '/mm.cfg'
 
   def setup(opt={})
     install_flex_sdk
@@ -23,13 +23,17 @@ class LFD
   def build(opt={})
     if File.exist?(CONFIG_FILE)
       info = YAML.load_file(CONFIG_FILE)
-      args = build_arg(info)
+      args = build_arg(info, opt)
       system MXMLC, info["main"], *args
       raise "build_fail" if $?.exitstatus != 0
     else
       puts "#{CONFIG_FILE} not found, exiting"
       exit 
     end
+  end
+
+  def release(opt=Hash.new)
+    build :debug => false
   end
 
   def run(opt={})
@@ -83,13 +87,13 @@ class LFD
     system "echo '' > #{TRACE_LOG}"
   end
 
-  def build_arg(info)
+  def build_arg(info, opt={})
     ot = info["output"]
     args = [
       "--target-player=#{info["target"]}",
       "--output=#{ot["file"]}",
       "--source-path=#{array_opt_to_s info["source"]}",
-      "--debug=true",
+      "--debug=#{opt[:debug] != false}",
       "-static-link-runtime-shared-libraries=true" 
       # TODO: 加上更多的编译选项
     ]
