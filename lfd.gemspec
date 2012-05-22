@@ -8,7 +8,7 @@ spec = Gem::Specification.new do |s|
   s.version = Lfd::VERSION
   s.author = 'qhwa'
   s.email = 'qhwa@163.com'
-  s.homepage = 'http://q.pnq.cc'
+  s.homepage = 'https://github.com/qhwa/LFD'
   s.platform = Gem::Platform::RUBY
   s.summary = 'Flash develop tool on Linux'
 # Add your other files here if you make them
