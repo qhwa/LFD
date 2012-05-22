@@ -9,14 +9,11 @@ LFD is your firend if you are suffering from the pain as well as me.
 
 ## Usage
 
-    lfd init    # init your project home, creating file: asproj.info, making dirs: bin/ src/
-    lfd build   # compile your main Appliation file(config in asproj.info) into a binary swf file
-    lfd run     # open swf file with standalone Adobe Flash Player.
+    lfd init    # init your project home, creating file: asproj.info, making dirs: bin/ src/ lib/ etc.
+    lfd build   # compile your appliation (configed in asproj.info) with a binary swf file output
+    lfd run     # open swf file with standalone Adobe flash player.
     lfd test    # equals "lfd build && lfd run"
-    lfd rm      # delete project info file and folders created by LFD. will not delete non-empty folder
-    lfd         # equals "lfd test"
-
-    lfd -T      # list all commands
+    lfd clean   # delete project info file and folders created by LFD. will not delete non-empty folder
 
 ##  Installation
 ###  System Requirements
@@ -36,16 +33,11 @@ LFD is your firend if you are suffering from the pain as well as me.
 
 ### Install LFD
 
-    # change to any path you like
-    LFD_PATH=$HOME/.lfd
-
-    git clone https://qhwa@github.com/qhwa/LFD.git $LFD_PATH
-    echo -e "alias lfd=$LFD_PATH/lfd" >> ~/.bashrc
-    source ~/.bashrc
+    gem install lfd
 
 ## Configuration
 
-LFD requires Flex SDK and Flash Player very much. Please config them in your bash config (~/.bashrc commonly)
+LFD depends on Flex SDK and Flash Player heavily. Please config them in your bash config (~/.bashrc commonly)
 
     export MXMLC="/path/to/flex_sdk/bin/mxmlc"
     export FLASH_PLAYER="/path/to/flashplayer_standalone"

@@ -1,9 +1,8 @@
 package {
 
   import flash.display.Sprite;
-  import cn.alibaba.product.uploader.AliUploaderBasic;
 
-  public class Main extends AliUploaderBasic {
+  public class Main extends Sprite {
 
 	public function Main(){
 	  trace('Hello!');

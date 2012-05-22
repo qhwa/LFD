@@ -32,6 +32,11 @@ class LFD
     end
   end
 
+  def test
+    build
+    run
+  end
+
   def release(opt=Hash.new)
     build :debug => false
   end
@@ -48,7 +53,7 @@ class LFD
     Process.kill "HUP", tracer
   end
 
-  def rm(opt={})
+  def clean(opt={})
     FileUtils.rm_f CONFIG_FILE
     FileUtils.rmdir %w(bin lib src tmp)
   end
