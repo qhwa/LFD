@@ -2,6 +2,9 @@
 require File.join([File.dirname(__FILE__),'lib','lfd_version.rb'])
 spec = Gem::Specification.new do |s| 
   s.name = 'lfd'
+  s.description = <<-EOF
+    LFD,  which stands for "Linux Flash Develop", will help you develop Flash and Flex applications on Linux.
+  EOF
   s.version = Lfd::VERSION
   s.author = 'qhwa'
   s.email = 'qhwa@163.com'
