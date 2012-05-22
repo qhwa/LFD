@@ -7,13 +7,12 @@ LFD 可以帮助你在Linux下开发和调试Flash(ActionScript3和Flex)项目
 
 ## 使用方法
 
-    lfd -T      #显示所有任务
+    lfd         #显示帮助
     lfd init    #在当前目录初始化项目
     lfd build   #编译项目
     lfd run     #以flashplayer打开编译出来的swf文件
     lfd test    #编译并打开,  等同于 lfd build && lfd run
-    lfd rm      #删除项目，会删除lfd创建出来的 asproj.info 文件
-    lfd         #等同于 lfd test
+    lfd clean   #删除项目，会删除lfd创建出来的 asproj.info 文件
 
 ##  安装
 ###  系统要求
@@ -33,14 +32,11 @@ LFD 可以帮助你在Linux下开发和调试Flash(ActionScript3和Flex)项目
 
 ### 安装LFD
 
-    # 这里的路径可以替换成你喜欢的任意地方
-    LFD_PATH=$HOME/.lfd
-    git clone https://qhwa@github.com/qhwa/LFD.git $LFD_PATH
-    echo -e "alias lfd=$LFD_PATH/lfd" >> ~/.bashrc
-    source ~/.bashrc
+    gem install lfd
 
 ## 配置
 
+lfd 运行时会调用flex sdk和flash播放器，请将他们所在的路径添加到$PATH中.
 在$HOME/.bashrc中指定以下配置：
 
     export MXMLC="/path/to/flex_sdk/bin/mxmlc"
