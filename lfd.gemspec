@@ -15,6 +15,8 @@ spec = Gem::Specification.new do |s|
   s.files = %w(
 bin/lfd
 lib/lfd_version.rb
+lib/lfd.rb
+lib/asproj.info.sample
   )
   s.require_paths << 'lib'
   s.has_rdoc = true
