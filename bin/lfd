@@ -16,7 +16,7 @@ require 'gli'
 require 'lfd_version'
 require 'lfd'
 
-include GLI
+include GLI::App
 
 program_desc 'Linux Flash Develop'
 
@@ -52,4 +52,4 @@ on_error do |exception|
   true
 end
 
-exit GLI.run(ARGV)
+exit run(ARGV)
