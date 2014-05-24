@@ -1,6 +1,7 @@
 # -*- encoding:utf-8
 require 'yaml'
 require 'fileutils'
+require 'open3'
 
 class LFD
 
@@ -25,10 +26,11 @@ class LFD
     if File.exist?(CONFIG_FILE)
       info = YAML.load_file(CONFIG_FILE)
       args = build_arg(info, opt)
-      system MXMLC, info["main"], *args
-      raise "build_fail" if $?.exitstatus != 0
+      Open3.popen3 MXMLC, info["main"], *args do |i, o, e, t|
+        t.value
+      end
     else
-      puts "#{CONFIG_FILE} not found, exiting"
+      fail "#{CONFIG_FILE} not found, exiting"
       exit 
     end
   end
