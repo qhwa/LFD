@@ -2,6 +2,8 @@
 require 'yaml'
 require 'fileutils'
 require 'open3'
+require 'colored'
+require 'shellwords'
 
 class LFD
 
@@ -11,6 +13,47 @@ class LFD
   TRACE_LOG     = File.join ENV['HOME'], '/.macromedia/Flash_Player/Logs/flashlog.txt'
   CONFIG_SAMPLE = File.expand_path("../#{CONFIG_FILE}.sample", __FILE__)
   MM_CFG        = File.join ENV['HOME'], '/mm.cfg'
+
+  # Public: Check the flash developing environment
+  def env(opt={})
+    check_flex_sdk
+    check_flash_player
+  end
+
+  def check_flex_sdk
+    print "Flex SDK:".ljust(15)
+    check_path MXMLC
+    print "\n"
+  end
+
+  def check_path cmd
+    path = executable_path( cmd )
+    if path
+      print path.chomp.green
+    else
+      print "✗".red
+    end
+  end
+
+  def check_flash_player
+    print "Flash Player: ".ljust(15)
+    check_path FLASH_PLAYER
+    print "\n"
+  end
+
+  def executable_path cmd
+    path = `which #{Shellwords.escape(cmd)}`
+    path.empty? ? nil : path
+  end
+
+  def executable? cmd
+    !!executable_path
+  end
+
+  ## end of check functions
+  # TODO: move to a module
+
+  # Setup subcommand
 
   def setup(opt={})
     install_flex_sdk

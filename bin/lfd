@@ -31,7 +31,8 @@ version Lfd::VERSION
   :run     => 'run built swf file with debugger version of flash player',
   :test    => 'build and run current project',
   :release => 'build binary swf of release version',
-  :clean   => 'remove files in current directory that were added by LFD'
+  :clean   => 'remove files in current directory that were added by LFD',
+  :env     => 'check the flash developing environment'
 
 }.each do |cmd, text|
 
