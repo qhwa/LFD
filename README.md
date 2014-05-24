@@ -25,7 +25,7 @@ LFD is your firend if you are suffering from the pain as well as me.
 
 2. Flex SDK
 
-    you can [download](http://opensource.adobe.com/wiki/display/flexsdk/Flex+SDK) Flex SDK from Adobe, version 4.5+ is suggested because I havn't test many versions of SDK.
+    you can [download](http://sourceforge.net/adobe/flexsdk/wiki/Downloads/) Flex SDK from Adobe, version 4.5+ is suggested because I havn't test many versions of SDK.
 
 3. Standalone Flash Player
 
