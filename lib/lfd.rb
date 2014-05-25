@@ -47,7 +47,7 @@ class LFD
   end
 
   def executable? cmd
-    !!executable_path
+    !!executable_path( cmd )
   end
 
   ## end of check functions
@@ -69,8 +69,10 @@ class LFD
     if File.exist?(CONFIG_FILE)
       info = YAML.load_file(CONFIG_FILE)
       args = build_arg(info, opt)
-      Open3.popen3 MXMLC, info["main"], *args do |i, o, e, t|
-        t.value
+      if executable?( MXMLC )
+        system MXMLC, info["main"], *args
+      else
+        fail "mxmlc not found!"
       end
     else
       fail "#{CONFIG_FILE} not found, exiting"
