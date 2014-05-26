@@ -4,16 +4,9 @@ module LFDTest
 
   module Task
 
-    class CheckMMCFGTest < Test::Unit::TestCase
+    class CheckMMCFGTest < ::LFDTest::TestCase
 
       MM_CFG = "#{ENV["HOME"]}/mm.cfg"
-
-      def setup
-        @lfd = LFD.new
-      end
-
-      def teardown
-      end
 
       def test_create_new_cfg_file_when_none
         FileUtils.rm_f MM_CFG

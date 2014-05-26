@@ -39,7 +39,7 @@ version Lfd::VERSION
   desc text
   command cmd do |c|
     c.action do
-      LFD.new.send(cmd)
+      LFD::App.new.send(cmd)
     end
   end
 

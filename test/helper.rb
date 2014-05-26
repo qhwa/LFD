@@ -16,7 +16,7 @@ module LFDTest
       FileUtils.mkdir_p proj_dir
       cd proj_dir
 
-      @lfd = LFD.new
+      @lfd = LFD::App.new
     end
 
     def teardown
