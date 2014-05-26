@@ -1,0 +1,16 @@
+name: test_as_proj
+
+target: 10.0
+
+source: 
+  - src
+  - /home/qhwa/working-disk/working/Projects/nightly_builder/libraries/ccbu-trunk/
+
+library: 
+  - lib
+
+include_classes:
+  - Main
+
+output: 
+  file: bin/test_as_proj.swc

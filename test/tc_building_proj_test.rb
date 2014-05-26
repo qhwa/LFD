@@ -14,6 +14,14 @@ module LFDTest
         assert File.exist?( "#{option["output"]["file"]}" ), "binary file should have been made"
       end
 
+      def test_building_swc
+        cd "#{fixture_path}/projects/flash10_swc_proj"
+        option = YAML.load_file('asproj.info')
+        @lfd.build
+        assert_equal 0, $?.exitstatus, 'building should succeed'
+        assert File.exist?( "#{option["output"]["file"]}" ), "binary file should have been made"
+      end
+
     end
 
   end
