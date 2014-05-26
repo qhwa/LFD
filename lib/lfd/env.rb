@@ -2,6 +2,30 @@ module LFD
 
   module Env
     
+    # Public: Check the flash developing environment
+    def env(opt={})
+      check_flex_sdk
+      check_flash_player
+    end
+
+    def check_flex_sdk
+      check_cmd( "flex sdk - mxmlc", mxmlc_path )
+      check_cmd( "flex sdk - compc", compc_path )
+    end
+
+    def check_cmd title, cmd_path
+      print "#{title}: ".capitalize.rjust(20)
+      if cmd_path
+        puts cmd_path.chomp.green
+      else
+        puts "✗".red
+      end
+    end
+
+    def check_flash_player
+      check_cmd 'Flash Player', fp_path
+    end
+
     def flex_sdk_ready?
       mxmlc_ready? && compc_ready?
     end
