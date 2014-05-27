@@ -156,6 +156,16 @@ module LFD
           w, h = output["width"], output["height"]
           args << "--default-size=#{w},#{h}" if w and h
 
+          # conditional compilation, set in asproj.info:
+          #
+          # compile_condition:
+          #  CONFIG::debugging: true
+          #
+          cc = info["compile_condition"]
+          cc && cc.each do |k, v|
+            args << "-define+=#{k},#{v}"
+          end
+
         end
       end
 
