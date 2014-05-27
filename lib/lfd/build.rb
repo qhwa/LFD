@@ -115,7 +115,6 @@ module LFD
         [
           "-target-player #{info["target"]}",
           "-output #{output_path}",
-          "-directory=true",
           "-compiler.source-path #{array_opt_to_s info["source"], ' '}"
           # TODO: 加上更多的编译选项
         ].tap do |args|
