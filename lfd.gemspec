@@ -12,12 +12,8 @@ spec = Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.summary = 'Flash develop tool on Linux'
 # Add your other files here if you make them
-  s.files = %w(
-bin/lfd
-lib/lfd_version.rb
-lib/lfd.rb
-lib/asproj.info.sample
-  )
+  s.files = `git ls-files`.split("
+")
   s.require_paths << 'lib'
   s.has_rdoc = true
   s.extra_rdoc_files = ['README.rdoc','lfd.rdoc']

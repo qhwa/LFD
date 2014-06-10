@@ -1,6 +1,0 @@
-= lfd : Linux Flash Develop
-
-Command-line tool to make flash developing easy on Linux.
-
-:include:lfd.rdoc
-

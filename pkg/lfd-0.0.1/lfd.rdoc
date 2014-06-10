@@ -1,5 +1,0 @@
-= lfd
-
-Generate this with
-    lfd rdoc
-After you have described your command line interface
