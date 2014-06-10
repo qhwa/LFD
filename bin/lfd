@@ -1,4 +1,8 @@
 #!/usr/bin/env ruby
+# Fix ruby 1.9 encoding
+Encoding.default_internal = Encoding::UTF_8
+Encoding.default_external = Encoding::UTF_8
+
 # 1.9 adds realpath to resolve symlinks; 1.8 doesn't
 # have this method, so we add it so we get resolved symlinks
 # and compatibility
