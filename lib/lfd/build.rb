@@ -131,6 +131,11 @@ module LFD
             end
           end
 
+          info["compile_condition"].tap do |cc|
+            cc && cc.each do |k, v|
+              args << "-define+=#{k},#{v}"
+            end
+          end
         end
         
       end
