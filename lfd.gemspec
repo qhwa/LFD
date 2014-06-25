@@ -22,6 +22,7 @@ spec = Gem::Specification.new do |s|
   s.executables << 'lfd'
   s.add_development_dependency('rake')
   s.add_development_dependency('rdoc')
+
   s.add_runtime_dependency('gli')
   s.add_runtime_dependency('colored')
 end

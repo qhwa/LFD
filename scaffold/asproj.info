@@ -1,0 +1,17 @@
+name: <%= project.name %>
+
+target: <%= project.target %>
+
+source: 
+  - src
+
+library: 
+  - lib
+
+main:
+  <%= main %>
+
+output: 
+  file: bin/<%= project.name %>.swf
+  width: 800
+  height: 600

@@ -1,13 +1,15 @@
 PATH
   remote: .
   specs:
-    lfd (0.0.1)
+    lfd (0.1.2)
+      colored
       gli
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
-    gli (1.6.0)
+    colored (1.2)
+    gli (2.11.0)
     json (1.6.6)
     rake (0.9.2.2)
     rdoc (3.12)
