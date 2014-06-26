@@ -10,10 +10,23 @@ module LFD
     Project = Struct.new(:name, :target)
 
     def init(opt={})
-      @opt = opt
+
+      @opt   = opt
+
+      if target
+        mkdir_p target
+        cd target
+      end
+
       mkdir_p %w(bin lib src tmp)
       mk_cfg
       mk_main
+    end
+
+    def target
+      if @opt[:target]
+        @opt[:target].underscore.dasherize
+      end
     end
 
     def mk_cfg

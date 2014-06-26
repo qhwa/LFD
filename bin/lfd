@@ -32,7 +32,7 @@ desc 'initialize an AS3 project at current working directory'
 command :init do |c|
   c.flag :name
   c.action do |global, opt, args|
-    LFD::App.new.send :init, opt
+    LFD::App.new.send :init, opt.merge({target: args.first})
   end
 end
 
