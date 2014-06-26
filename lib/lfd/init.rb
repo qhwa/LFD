@@ -1,4 +1,5 @@
 require 'erb'
+require 'active_support/core_ext/string'
 
 module LFD
 
@@ -9,6 +10,7 @@ module LFD
     Project = Struct.new(:name, :target)
 
     def init(opt={})
+      @opt = opt
       mkdir_p %w(bin lib src tmp)
       mk_cfg
       mk_main
@@ -47,7 +49,11 @@ module LFD
     end
 
     def project_name
-      File.basename(pwd)
+      @opt[:name] || File.basename(pwd)
+    end
+
+    def output_name
+      project_name.underscore.dasherize
     end
 
   end

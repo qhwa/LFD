@@ -28,9 +28,15 @@ program_desc 'Linux Flash Develop'
 
 version Lfd::VERSION
 
-{
+desc 'initialize an AS3 project at current working directory'
+command :init do |c|
+  c.flag :name
+  c.action do |global, opt, args|
+    LFD::App.new.send :init, opt
+  end
+end
 
-  :init    => 'initialize an AS3 project at current working directory',
+{
   :build   => 'build current project',
   :run     => 'run built swf file with debugger version of flash player',
   :test    => 'build and run current project',
