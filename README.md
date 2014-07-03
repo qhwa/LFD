@@ -9,6 +9,7 @@ LFD is your firend if you are suffering from the pain as well as me.
 
 ## Usage
 
+    lfd env     # check the develop environment
     lfd init    # init your project home, creating file: asproj.info, making dirs: bin/ src/ lib/ etc.
     lfd build   # compile your appliation (configed in asproj.info) with a binary swf file output
     lfd run     # open swf file with standalone Adobe flash player.
@@ -22,6 +23,8 @@ LFD is your firend if you are suffering from the pain as well as me.
     you can install ruby1.9.2 with this commands on unbuntu:
 
         sudo apt-get install ruby1.9.1
+
+    or use [rvm](http://rvm.io) to install ruby
 
 2. Flex SDK
 
@@ -37,7 +40,14 @@ LFD is your firend if you are suffering from the pain as well as me.
 
 ## Configuration
 
-LFD depends on Flex SDK and Flash Player heavily. Please config them in your bash config (~/.bashrc commonly)
+LFD depends on Flex SDK and Flash Player heavily. Please config them in your bash config (~/.bashrc commonly) to make sure Flex SDK is executable in your shell. To check which flex sdk is choosen, just run `lfd env`. Here's what it outputs in my laptop:
 
-    export MXMLC="/path/to/flex_sdk/bin/mxmlc"
-    export FLASH_PLAYER="/path/to/flashplayer_standalone"
+![lfd-env-output](http://xiaotuhe.com/uploads/share/file/1e245635077b6ac91c430241603f5e78.png)
+
+You may have multiples versions of Flex SDKs installed, and choose one for lfd, by setting the MXMLC/COMPC/FLASH_PLAYER variables, e.g:
+
+    MXMLC="/path/to/flex_sdk/bin/mxmlc" \
+    FLASH_PLAYER="/path/to/flashplayer_standalone" \
+    lfd test
+
+
