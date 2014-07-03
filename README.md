@@ -12,8 +12,6 @@ I don't want to switch from my workspace on Linux to Windows to do some little d
 
 So I wrote this little gem to make it easy to develop flash applications in Linux. LFD is your firend if you are suffering from the pain as well as me.
 
-See it in action:
-
 ## Usage
 
     lfd env     # check the develop environment
