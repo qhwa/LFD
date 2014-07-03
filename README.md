@@ -8,7 +8,7 @@ Later version of LFD can also be run on Mac with Ruby installed. One may use LFD
 1. you must write many lines of command to compile your code into a swf file
 2. 'trace' do not output in standard output (such as terminal) in new version of standalone flash player
 
-Though I have rarely developed flash applications for a while, I don't want to switch from my workspace on Linux to Windows to do some little developing of flash. And I prefer command line tools and vim over Flash Builder.
+I don't want to switch from my workspace on Linux to Windows to do some little developing of flash. And I prefer command line tools and vim over Flash Builder.
 
 So I wrote this little gem to make it easy to develop flash applications in Linux. LFD is your firend if you are suffering from the pain as well as me.
 
