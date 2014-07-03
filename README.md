@@ -14,8 +14,6 @@ So I wrote this little gem to make it easy to develop flash applications in Linu
 
 See it in action:
 
-![lfd-test-demo](http://xiaotuhe.com/uploads/share/file/ead34cfb383370e26c20732969893ebb.png)
-
 ## Usage
 
     lfd env     # check the develop environment
