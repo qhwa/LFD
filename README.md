@@ -1,11 +1,16 @@
 # Linux Flash Develp
-LFD,  which stands for "Linux Flash Develop", will help you develop Flash and Flex applications on Linux, especially Ubuntu.
+LFD,  which stands for "Linux Flash Develop", will help you develop Flash and Flex applications on Linux, especially Ubuntu. 
+Later version of LFD can also be run on Mac with Ruby installed. One may use LFD instead of Flash Builder for firendly command line usage.
 
 ## Pain of Flash Developing On Linux
+
+1. official support has been dropped on Linux for a long time. AIR and Flash Builder are not available on Linux. 
 1. you must write many lines of command to compile your code into a swf file
 2. 'trace' do not output in standard output (such as terminal) in new version of standalone flash player
 
-LFD is your firend if you are suffering from the pain as well as me.
+Though I have rarely developed flash applications for a while, I don't want to switch from my workspace on Linux to Windows to do some little developing of flash. And I prefer command line tools and vim over Flash Builder.
+
+So I wrote this little gem to make it easy to develop flash applications in Linux. LFD is your firend if you are suffering from the pain as well as me.
 
 ## Usage
 
