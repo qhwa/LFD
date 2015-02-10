@@ -47,7 +47,12 @@ So I wrote this little gem to make it easy to develop flash applications in Linu
 
 LFD depends on Flex SDK and Flash Player heavily. Please config them in your bash config (~/.bashrc commonly) to make sure Flex SDK is executable in your shell. To check which flex sdk is choosen, just run `lfd env`. Here's what it outputs in my laptop:
 
-![lfd-env-output](http://xiaotuhe.com/uploads/share/file/1e245635077b6ac91c430241603f5e78.png)
+~~~sh
+$ lfd env
+  Flex sdk - mxmlc: ✗
+  Flex sdk - compc: ✗
+      Flash player: ✗
+~~~
 
 You may have multiples versions of Flex SDKs installed, and choose one for lfd, by setting the MXMLC/COMPC/FLASH_PLAYER variables, e.g:
 
